@@ -10,6 +10,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: 'latest'
 - task: TerraformCLI@0
   inputs:
     command: 'init'
@@ -21,10 +24,11 @@ steps:
     backendAzureRmContainerName: 'tfstate'
     backendAzureRmKey: 'terraform.tfstate'
     allowTelemetryCollection: true
+
 - task: TerraformCLI@0
   inputs:
     command: 'plan'
-    environmentServiceName: 'AutomationEngineerLab (159ab5c4-90b4-42a3-aeb4-199816bf79ed)'
+    environmentServiceName: 'AutomationEngineerLab(159ab5c4-90b4-42a3-aeb4-199816bf79ed)'
     providerAzureRmSubscriptionId: '159ab5c4-90b4-42a3-aeb4-199816bf79ed'
     allowTelemetryCollection: true
-    publishPlanResults: 'tf.tfplan'
+
